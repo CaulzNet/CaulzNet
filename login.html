@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>CaulzNet Login</title>
+</head>
+<body>
+
+ <div id="Registration">
+  <h1>Login</h1>
+  <input type="text" name="email" id="email" placeholder="Enter Your Email"><br><br>
+  <input type="password" name="password" id="password" placeholder="Enter Your Password"><br><br>
+  <button onclick="LoginUser()">Login</button>
+  <button onclick="RegisterUser()">Sign Up</button><br><br>
+  <a href="PasswordReset.html">Fogot Password?</a>
+ </div>
+
+<script src="Firebace.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+
+<script>
+  Firebaceinfo()
+  function RegisterUser() {
+    window.location.replace("Signup.html");
+  }
+  function LoginUser(){
+   var email=document.getElementById('email').value;
+   var password=document.getElementById('password').value;
+   firebase.auth().signInWithEmailAndPassword(email,password).then(function(){
+
+
+    var id=firebase.auth().currentUser.uid;
+    window.location.replace("index.html");
+    localStorage.setItem('id',id);
+
+   }).catch(function(error){
+
+    alert("Email Or Password Is Incorrect Or That Account Does Not Exist")
+    var errorCode=error.code;
+    var errorMsg=error.message;
+
+   });
+  }
+</script>
+
+</body>
+</html>

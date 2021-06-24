@@ -1,7 +1,37 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<body>
-<h1>This Is A Test</h1>
-</body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-auth.js"></script>
 </head>
+<body>
+  <h1>CaulzBit</h1>
+  <button onclick="Settings();">Settings</button>
+  <button onclick="SignOut();">Sign Out</button>
+  <script src="Firebace.js"></script>
+  <script src="AntiUser.js"></script>
+  <script>
+Firebaceinfo()
+AntiUser()
+
+  function Settings() {
+    window.location.replace("Settings.html");
+}
+  function SignOut() {
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          // User is signed in.
+        } else {
+          // No user is signed in.
+          window.location.replace("Login.html");
+        }
+      });
+  }
+
+  </script>
+</body>
 </html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Verify</title>
+</head>
+<body>
+
+ <div id="Registration">
+  <h1>Verification Email Sent</h1>
+  <h2>Check Your Emails</h2>
+  <button onclick="sendEmailVerification()">Send Email</button>
+  <button onclick="checkEmailApprove()">Refresh</button>
+ </div>
+
+<script src="Firebace.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+
+<script>
+  Firebaceinfo()
+ function sendEmailVerification() {
+   var user = firebase.auth().currentUser;
+
+user.sendEmailVerification().then(function() {
+  alert("Email Sent")
+}).catch(function(error) {
+  alert("Error Please Try Again")
+});
+ }
+
+ function checkEmailApprove() {
+   var user = firebase.auth().currentUser;
+   emailVerified = user.emailVerified;
+   if (emailVerified = true) {
+   alert("Email Approved");
+   window.location.replace("index.html");
+   }
+ }
+</script>
+
+</body>
+</html>
